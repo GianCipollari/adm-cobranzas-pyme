@@ -1,0 +1,6 @@
+﻿data/
+.venv/
+target/
+logs/
+.env
+*.duckdb
