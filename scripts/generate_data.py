@@ -214,6 +214,8 @@ for proc, ajuste, dias_deb in [("Payway", 0.0, 2), ("Fiserv", 0.001, 2), ("Merca
                        "comision_pct": round(0.018 + ajuste, 4), "costo_financiero_pct": cf,
                        "dias_acreditacion": 10})
 planes = pd.DataFrame(planes)
+planes.insert(0, "plan_id", planes["procesadora"].str.lower().str.replace(" ", "_")
+              + "-" + planes["tarjeta_tipo"] + "-" + planes["cuotas"].astype(str))
 plan_idx = planes.set_index(["procesadora", "tarjeta_tipo", "cuotas"])
 
 RET_IIBB, RET_IVA, RET_GAN, IVA = 0.015, 0.01, 0.005, 0.21
